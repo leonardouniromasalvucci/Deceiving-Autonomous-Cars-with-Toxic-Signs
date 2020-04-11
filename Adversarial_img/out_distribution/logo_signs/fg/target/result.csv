@@ -1,0 +1,9 @@
+path_adversarial,adversarial_prevision,success
+Adversarial_img/out_distribution/logo_signs/fg/target/0.png,Yield,0
+Adversarial_img/out_distribution/logo_signs/fg/target/1.png,Bicycles crossing,0
+Adversarial_img/out_distribution/logo_signs/fg/target/2.png,Speed limit (60km/h),1
+Adversarial_img/out_distribution/logo_signs/fg/target/3.png,Turn right ahead,0
+Adversarial_img/out_distribution/logo_signs/fg/target/4.png,Roundabout mandatory,0
+Adversarial_img/out_distribution/logo_signs/fg/target/5.png,Speed limit (60km/h),1
+Adversarial_img/out_distribution/logo_signs/fg/target/6.png,Ahead only,0
+Adversarial_img/out_distribution/logo_signs/fg/target/7.png,Priority road,0

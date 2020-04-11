@@ -1,0 +1,16 @@
+path_adversarial,original_prevision,adversarial_prevision,success
+Adversarial_img/in_distribution/fg/untarget/0.png,1,23,1
+Adversarial_img/in_distribution/fg/untarget/1.png,9,9,0
+Adversarial_img/in_distribution/fg/untarget/2.png,27,27,0
+Adversarial_img/in_distribution/fg/untarget/3.png,7,23,1
+Adversarial_img/in_distribution/fg/untarget/4.png,23,23,0
+Adversarial_img/in_distribution/fg/untarget/5.png,33,33,0
+Adversarial_img/in_distribution/fg/untarget/6.png,8,23,1
+Adversarial_img/in_distribution/fg/untarget/7.png,2,2,0
+Adversarial_img/in_distribution/fg/untarget/8.png,3,3,0
+Adversarial_img/in_distribution/fg/untarget/9.png,13,13,0
+Adversarial_img/in_distribution/fg/untarget/10.png,26,26,0
+Adversarial_img/in_distribution/fg/untarget/11.png,22,22,0
+Adversarial_img/in_distribution/fg/untarget/12.png,36,36,0
+Adversarial_img/in_distribution/fg/untarget/13.png,42,42,0
+Adversarial_img/in_distribution/fg/untarget/14.png,6,23,1
