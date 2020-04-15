@@ -122,6 +122,23 @@ def rem_data(root, files, fixed_length):
 		cv2.imwrite(TRAIN_AUG_PATH+"/"+str(a[1:])+"/"+str(j)+".png", l[j])
 
 
+
+im = cv2.imread("aug_examples/00001_00011_00027.png")
+img = apply_flip(im, 1)
+cv2.imwrite("aug_examples/1.png", img)
+
+img = apply_brightness(im, 0.5)
+cv2.imwrite("aug_examples/2.png", img)
+
+img = apply_rotate_image(im, 0.5)
+cv2.imwrite("aug_examples/3.png", img*255)
+
+img = apply_projection_transform(im, 0.5)
+cv2.imwrite("aug_examples/4.png", img*255)
+
+exit()
+
+
 print("Starting DATA AUGMENTATION\n")
 if os.path.exists(TRAIN_AUG_PATH):
 	shutil.rmtree(TRAIN_AUG_PATH)

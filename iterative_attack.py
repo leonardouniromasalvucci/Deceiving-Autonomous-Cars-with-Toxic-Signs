@@ -7,13 +7,13 @@ import utils
 
 def gradient_fn(model):
     y_true = K.placeholder(shape=(OUTPUT_DIM, ))
-    loss = tf.nn.softmax_cross_entropy_with_logits(
-        labels=y_true, logits=model.output)
+    loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y_true, logits=model.output)
     grad = K.gradients(loss, model.input)
 
     return K.function([model.input, y_true, K.learning_phase()], grad)
 
 def gradient_input(grad_fn, x, y):
+    
     return grad_fn([x.reshape(INPUT_SHAPE), y, 0])[0][0]
 
 def iterative(model, x, y, mask, target):

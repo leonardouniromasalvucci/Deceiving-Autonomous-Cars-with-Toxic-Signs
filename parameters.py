@@ -31,6 +31,7 @@ CSV_PATH_TEST = "gtsrb-german-traffic-sign/Test.csv"
 
 TEST_DATA_DIR = "gtsrb-german-traffic-sign/Test"
 TEST_DATA_DIR_2 = "gtsrb-german-traffic-sign/Testing"
+TEST_DATA_DIR_3 = "Samples"
 
 SAMPLE_IMG_DIR = "Original_samples"
 SAMPLE_LABEL = 'Original_samples/labels.txt'

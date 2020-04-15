@@ -11,17 +11,22 @@ import cv2
 
 from parameters import *
 
-def match_pred(predictions):
+def match_pred_yd(predictions):
     dataframe = pd.read_csv(CSV_PATH)
     l = []
     for i in range(len(predictions)):
         l.append(int(dataframe['ClassId'].loc[dataframe['ModelId'] == predictions[i]]))
     return np.array(l)
 
+def match_pred_ym(predictions):
+    dataframe = pd.read_csv(CSV_PATH)
+    l = []
+    for i in range(len(predictions)):
+        l.append(int(dataframe['ModelId'].loc[dataframe['ClassId'] == predictions[i]]))
+    return l
+
 
 def save_in_distribution_attack(model, attack_type, is_target, class_id, x, result):
-
-    #target_id = rename_signs(CSV_PATH, class_id)
 
     csv_data_attack = pd.DataFrame(columns=['path_adversarial', 'original_prevision', 'adversarial_prevision', 'success'])
     size = len(x)
@@ -32,23 +37,22 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
         img_orig = np.expand_dims(original_image, axis=0)
         res_orig = model.predict(img_orig)
         Ypred_orig = np.argmax(res_orig, axis=1)
-        #r_orig = rename_signs(CSV_PATH, Ypred_orig[0])
+        #print(Ypred_orig[0])
 
         if(attack_type == "FG"):
-            adv1 = result[5, i]
+            adv1 = result[i]
             img_adv1 = np.expand_dims(adv1, axis=0)
             res_adv1 = model.predict(img_adv1)
             Ypred_adv1 = np.argmax(res_adv1, axis=1)
-            #r_adv1 = rename_signs(CSV_PATH, Ypred_adv1[0])
 
             if(is_target):
-                if(Ypred_adv1[0] != class_id):
+                if(int(Ypred_adv1[0]) != int(class_id)):
                     csv_data_attack.loc[i] = [ADV_IN_FG_ATTACK+"target/" + str(i) + ".png", Ypred_orig[0], Ypred_adv1[0], 0]
                 else:
                     csv_data_attack.loc[i] = [ADV_IN_FG_ATTACK+"target/" + str(i) + ".png", Ypred_orig[0], Ypred_adv1[0], 1]
                 cv.imwrite(ADV_IN_FG_ATTACK+"target/" + str(i) + '.png', adv1 * 255)
             else:
-                if(Ypred_adv1[0] != Ypred_orig[0]):
+                if(int(Ypred_adv1[0]) != int(Ypred_orig[0])):
                     csv_data_attack.loc[i] = [ADV_IN_FG_ATTACK+"untarget/" + str(i) + ".png", Ypred_orig[0], Ypred_adv1[0], 1]
                 else:
                     csv_data_attack.loc[i] = [ADV_IN_FG_ATTACK+"untarget/" + str(i) + ".png", Ypred_orig[0], Ypred_adv1[0], 0]
@@ -59,10 +63,9 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
             img_adv2 = np.expand_dims(adv2, axis=0)
             res_adv2 = model.predict(img_adv2)
             Ypred_adv2 = np.argmax(res_adv2, axis=1)
-            #r_adv2 = rename_signs(CSV_PATH, Ypred_adv2[0])
 
             if(is_target):
-                if(Ypred_adv2[0] != class_id):
+                if(int(Ypred_adv2[0]) != int(class_id)):
                     csv_data_attack.loc[i] = [ADV_IN_IT_ATTACK+"target/" + str(i) + ".png", Ypred_orig[0], Ypred_adv2[0], 0]
                 else:
                     csv_data_attack.loc[i] = [ADV_IN_IT_ATTACK+"target/" + str(i) + ".png", Ypred_orig[0], Ypred_adv2[0], 1]
@@ -70,7 +73,7 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
                 cv.imwrite(ADV_IN_IT_ATTACK+"target/" + str(i) + '.png', adv2 * 255)
 
             else:
-                if(Ypred_adv2[0] != Ypred_orig[0]):
+                if(int(Ypred_adv2[0]) != int(Ypred_orig[0])):
                     csv_data_attack.loc[i] = [ADV_IN_IT_ATTACK+"untarget/" + str(i) + ".png", Ypred_orig[0], Ypred_adv2[0], 1]
                 else:
                     csv_data_attack.loc[i] = [ADV_IN_IT_ATTACK+"untarget/" + str(i) + ".png", Ypred_orig[0], Ypred_adv2[0], 0]
@@ -83,7 +86,7 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
 
     accuracy = round((1 - (float(count) / float(size))) * 100, 2)
 
-    print("Percent of success attacks: " + str(accuracy) + "% -> " + str(count) + " errors on " + str(size) + " tests")
+    print("Attacks successful: " + str(accuracy) + "% ")#-> " + str(count) + " errors on " + str(size) + " tests")
 
     if(attack_type == "FG"):
         if(is_target):
@@ -99,52 +102,46 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
 
 def save_out_distribution_attack(model, attack_type, class_id, method, x, result):
     
-    target_id = rename_signs(CSV_PATH, class_id)
     csv_data_attack = pd.DataFrame(columns=['path_adversarial', 'adversarial_prevision', 'success'])
     size = len(x)
 
     for i in range(len(x)):
 
         if(attack_type == "FG"):
-            adv1 = result[5, i]
+            adv1 = result[i]
             img_adv1 = np.expand_dims(adv1, axis=0)
             res_adv1 = model.predict(img_adv1)
             Ypred_adv1 = np.argmax(res_adv1, axis=1)
-            r_adv1 = rename_signs(CSV_PATH, Ypred_adv1[0])
 
             if(method=="LOGO"):
-                if(r_adv1 != target_id):
-                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_FG_ATTACK + str(i) + ".png", r_adv1, 0]
+                if(int(Ypred_adv1[0]) != int(class_id)):
+                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_FG_ATTACK + str(i) + ".png", Ypred_adv1[0], 0]
                 else:
-                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_FG_ATTACK + str(i) + ".png", r_adv1, 1]
+                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_FG_ATTACK + str(i) + ".png", Ypred_adv1[0], 1]
                 cv.imwrite(ADV_OUT_LOGO_FG_ATTACK + str(i) + '.png', adv1 * 255)
             else:
-                if(r_adv1 != target_id):
-                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_FG_ATTACK + str(i) + ".png", r_adv1, 0]
+                if(int(Ypred_adv1[0]) != int(class_id)):
+                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_FG_ATTACK + str(i) + ".png", Ypred_adv1[0], 0]
                 else:
-                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_FG_ATTACK + str(i) + ".png", r_adv1, 1]
+                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_FG_ATTACK + str(i) + ".png", Ypred_adv1[0], 1]
                 cv.imwrite(ADV_OUT_BLANKS_FG_ATTACK + str(i) + '.png', adv1 * 255)
-
-
         else:
             adv2 = result[i]
             img_adv2 = np.expand_dims(adv2, axis=0)
             res_adv2 = model.predict(img_adv2)
             Ypred_adv2 = np.argmax(res_adv2, axis=1)
-            r_adv2 = rename_signs(CSV_PATH, Ypred_adv2[0])
-
 
             if(method=="LOGO"):
-                if(r_adv2 != target_id):
-                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_IT_ATTACK + str(i) + ".png", r_adv2, 0]
+                if(int(Ypred_adv2[0]) != int(class_id)):
+                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_IT_ATTACK + str(i) + ".png", Ypred_adv2[0], 0]
                 else:
-                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_IT_ATTACK + str(i) + ".png", r_adv2, 1]
+                    csv_data_attack.loc[i] = [ADV_OUT_LOGO_IT_ATTACK + str(i) + ".png", Ypred_adv2[0], 1]
                 cv.imwrite(ADV_OUT_LOGO_IT_ATTACK + str(i) + '.png', adv2 * 255)
             else:
-                if(r_adv2 != target_id):
-                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_IT_ATTACK + str(i) + ".png", r_adv2, 0]
+                if(int(Ypred_adv2[0]) != int(class_id)):
+                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_IT_ATTACK + str(i) + ".png", Ypred_adv2[0], 0]
                 else:
-                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_IT_ATTACK + str(i) + ".png", r_adv2, 1]
+                    csv_data_attack.loc[i] = [ADV_OUT_BLANKS_IT_ATTACK + str(i) + ".png", Ypred_adv2[0], 1]
                 cv.imwrite(ADV_OUT_BLANKS_IT_ATTACK + str(i) + '.png', adv2 * 255)
 
     count = 0
@@ -154,7 +151,7 @@ def save_out_distribution_attack(model, attack_type, class_id, method, x, result
 
     accuracy = round((1 - (float(count) / float(size))) * 100, 2)
 
-    print("Percent of success attacks: " + str(accuracy) + "% -> " + str(count) + " errors on " + str(size) + " tests")
+    print("Attacks successful: " + str(accuracy) + "% ")#-> " + str(count) + " errors on " + str(size) + " tests")
 
     if(attack_type == "FG"):
         if(method=="LOGO"):
@@ -244,11 +241,14 @@ def load_samples(img_dir, label_path, tg):
     masks_full = []
 
     labels = read_labels(label_path)
+    result = match_pred_ym(labels)
+
     rm_indx = -1
-    if(tg in labels):
+    if(tg in result):
         print("Deleting target class from samples...")
-        rm_indx = labels.index(tg)
+        rm_indx = result.index(tg)
         images = np.delete(images, [rm_indx], axis=0)
+        result = np.delete(result, [rm_indx], axis=0)
 
 
     for i, image in enumerate(images):
@@ -258,7 +258,7 @@ def load_samples(img_dir, label_path, tg):
     masks = resize_all(masks_full, interp='nearest')
     x_ben = resize_all(images, interp='bilinear')
 
-    return x_ben, masks
+    return x_ben, result, masks
 
 def detect_phase(image_path):
     img = np.copy(image_path)
@@ -304,9 +304,14 @@ def rgb2gray(image):
 
 def find_circles(img, mg_ratio, n_circles):
     targetImg = np.copy(img)
-    targetImg = np.uint8(targetImg * 255)
+    #cv.imwrite("Detector_samples/detection_phase_steps/original1.png", targetImg)
+
     targetImg = cv.GaussianBlur(targetImg, (13, 13), 0)
+    #cv.imwrite("Detector_samples/detection_phase_steps/gaussian_blur1.png", targetImg)
+
     grayImg = np.uint8(rgb2gray(targetImg))
+    #cv.imwrite("Detector_samples/detection_phase_steps/gray_img1.png", grayImg)
+
     circles = cv.HoughCircles(grayImg, cv.HOUGH_GRADIENT, 1, 200, param1=50, param2=30, minRadius=20, maxRadius=250)
     boxes_list = []
     try:

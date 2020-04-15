@@ -1,8 +1,8 @@
 path_adversarial,adversarial_prevision,success
-Adversarial_img/out_distribution/blank_signs/iterative/target/0.png,Ahead only,0
-Adversarial_img/out_distribution/blank_signs/iterative/target/1.png,Bicycles crossing,0
-Adversarial_img/out_distribution/blank_signs/iterative/target/2.png,Speed limit (60km/h),1
-Adversarial_img/out_distribution/blank_signs/iterative/target/3.png,Bicycles crossing,0
-Adversarial_img/out_distribution/blank_signs/iterative/target/4.png,Roundabout mandatory,0
-Adversarial_img/out_distribution/blank_signs/iterative/target/5.png,Go straight or right,0
-Adversarial_img/out_distribution/blank_signs/iterative/target/6.png,Speed limit (60km/h),1
+Adversarial_img/out_distribution/blank_signs/iterative/target/0.png,3,1
+Adversarial_img/out_distribution/blank_signs/iterative/target/1.png,22,0
+Adversarial_img/out_distribution/blank_signs/iterative/target/2.png,3,1
+Adversarial_img/out_distribution/blank_signs/iterative/target/3.png,22,0
+Adversarial_img/out_distribution/blank_signs/iterative/target/4.png,35,0
+Adversarial_img/out_distribution/blank_signs/iterative/target/5.png,30,0
+Adversarial_img/out_distribution/blank_signs/iterative/target/6.png,3,1

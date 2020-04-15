@@ -42,7 +42,9 @@ Ypred = np.argmax(preds, axis=1)
 test = pd.read_csv(CSV_PATH_TEST)
 count_err = 0
 
-result = utils.match_pred(Ypred)
+# Solve labels problem
+result = utils.match_pred_yd(Ypred)
+
 
 for i, item in test.iterrows():
 	if (item['ClassId'] != result[i]):

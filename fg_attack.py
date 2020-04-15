@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import keras.backend as K
+import cv2
 
 from parameters import *
 import utils
@@ -8,16 +9,15 @@ import utils
 def gradient_fn(model):
 
     y_true = K.placeholder(shape=(OUTPUT_DIM, ))
-    loss = tf.nn.softmax_cross_entropy_with_logits(
-        labels=y_true, logits=model.output)
+    loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y_true, logits=model.output)
     grad = K.gradients(loss, model.input)
 
     return K.function([model.input, y_true, K.learning_phase()], grad)
 
 
-def fg(model, x, y, mag_list, mask, target):
+def fg(model, x, y, mask, target):
 
-    x_adv = np.zeros((len(mag_list), ) + x.shape, dtype=np.float32)
+    x_adv = np.zeros(x.shape, dtype=np.float32)
     grad_fn = gradient_fn(model)
 
     for i, x_in in enumerate(x):
@@ -28,6 +28,7 @@ def fg(model, x, y, mag_list, mask, target):
         else:
             grad = grad_fn([x_in.reshape(INPUT_SHAPE), y[i], 0])[0][0]
 
+
         mask_rep = np.repeat(mask[i, :, :, np.newaxis], N_CHANNEL, axis=2)
         grad *= mask_rep
 
@@ -36,8 +37,7 @@ def fg(model, x, y, mag_list, mask, target):
         except ZeroDivisionError:
             raise
 
-        for j, mag in enumerate(mag_list):
-            x_adv[j, i] = x_in + grad * mag
+        x_adv[i] = x_in + grad * 3.5
 
     x_adv = np.clip(x_adv, 0, 1)
 

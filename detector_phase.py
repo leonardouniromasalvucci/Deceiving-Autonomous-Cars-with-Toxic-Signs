@@ -11,6 +11,7 @@ def detect_phase(image_path):
     for b in box:
         crop = utils.crop_image(image_path, b)
         resized_im = utils.resize_image(crop)
+    #cv.imwrite("Detector_samples/detection_phase_steps/final1.png", resized_im*255)
     return resized_im
 
 for filename in os.listdir(DETECTOR_SAMPLES_DIR+"/original"):
@@ -20,3 +21,4 @@ for filename in os.listdir(DETECTOR_SAMPLES_DIR+"/original"):
 	cv.waitKey(0)
 	cv.destroyAllWindows()
 	cv.imwrite(DETECTOR_SAMPLES_DIR+"/detected/"+filename, 255*res_im)
+	#break

@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import os
 import warnings
+
 warnings.filterwarnings("ignore")
 
 from tensorflow.python.util import deprecation
@@ -16,34 +17,31 @@ from parameters import *
 import utils
 
 def loss_out(correct, predicted):
-    return tf.nn.softmax_cross_entropy_with_logits(labels=correct, logits=predicted)
+    return tf.nn.softmax_cross_entropy_with_logits_v2(labels=correct, logits=predicted)
 
 def build_cnn(input_shape, num_classes):
     
     inpt = Input(shape=input_shape)
-    conv1 = Convolution2D(32, (5, 5), padding='same', activation='relu')(inpt)
-    drop1 = Dropout(rate=0.2)(conv1)
-    pool1 = MaxPooling2D(pool_size=(2, 2))(drop1)
+    conv_1 = Convolution2D(32, (5, 5), padding='same', activation='relu')(inpt)
+    drop_1 = Dropout(rate=0.2)(conv_1)
+    pool_1 = MaxPooling2D(pool_size=(2, 2))(drop_1)
 
-    conv2 = Convolution2D(64, (5, 5), padding='same', activation='relu')(pool1)
-    drop2 = Dropout(rate=0.3)(conv2)
-    pool2 = MaxPooling2D(pool_size=(2, 2))(drop2)
+    conv_2 = Convolution2D(64, (5, 5), padding='same', activation='relu')(pool_1)
+    drop_2 = Dropout(rate=0.3)(conv_2)
+    pool_2 = MaxPooling2D(pool_size=(2, 2))(drop_2)
 
-    conv3 = Convolution2D(128, (5, 5), padding='same', activation='relu')(pool2)
-    drop3 = Dropout(rate=0.4)(conv3)
-    pool3 = MaxPooling2D(pool_size=(2, 2))(drop3)
+    conv_3 = Convolution2D(128, (5, 5), padding='same', activation='relu')(pool_2)
+    drop_3 = Dropout(rate=0.4)(conv_3)
+    pool_3 = MaxPooling2D(pool_size=(2, 2))(drop_3)
 
-    flat1 = Flatten()(pool1)
-    flat2 = Flatten()(pool2)
-    flat3 = Flatten()(pool3)
+    concat = Concatenate(axis=-1)([Flatten()(pool_1), Flatten()(pool_2), Flatten()(pool_3)])
+    dense_1 = Dense(1024, activation='relu', kernel_regularizer=keras.regularizers.l2(0.0001))(concat)
+    drop_4 = Dropout(rate=0.5)(dense_1)
+    output = Dense(num_classes, kernel_regularizer=keras.regularizers.l2(0.0001))(drop_4)
 
-    merge = Concatenate(axis=-1)([flat1, flat2, flat3])
-    dense1 = Dense(1024, activation='relu', kernel_regularizer=keras.regularizers.l2(0.0001))(merge)
-    drop4 = Dropout(rate=0.5)(dense1)
-    output = Dense(num_classes, activation=None, kernel_regularizer=keras.regularizers.l2(0.0001))(drop4)
     model = keras.models.Model(inputs=inpt, outputs=output)
 
-    model.compile(optimizer=keras.optimizers.Adam(lr=0.0001, epsilon=1e-08), loss=loss_out, metrics=['accuracy'])
+    model.compile(optimizer=keras.optimizers.Adam(lr=0.0001), loss=loss_out, metrics=['accuracy'])
 
     return model
 
@@ -92,7 +90,11 @@ def get_real_time_prediction(img, model):
     r = dataframe['SignName'].loc[dataframe['ModelId'] == Ypred[0]]
     return r.to_string(index=False, header=False)
 
+def plt_model():
+	model = load_model()
+	model.summary()
 
+#plt_model()
 #model = load_model_weights(MODEL_PATH)
 #model.summary()
 #exit()

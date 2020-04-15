@@ -55,7 +55,7 @@ steps_per_epoch=train_generator.n//train_generator.batch_size
 val_steps=validation_generator.n//validation_generator.batch_size+1
 
 modelCheckpoint = ModelCheckpoint(MODEL_PATH, monitor='val_loss', verbose=1, save_best_only=True, save_weights_only=False, mode='auto', period=1)
-earlyStop = EarlyStopping(monitor='val_loss', min_delta=0.001, patience=10, verbose=0, mode='auto')
+earlyStop = EarlyStopping(monitor='val_loss', min_delta=0.001, patience=6, verbose=0, mode='auto')
 
 callbacks_list = [modelCheckpoint, earlyStop]
 

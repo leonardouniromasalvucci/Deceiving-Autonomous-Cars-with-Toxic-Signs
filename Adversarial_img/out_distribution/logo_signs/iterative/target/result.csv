@@ -1,9 +1,9 @@
 path_adversarial,adversarial_prevision,success
-Adversarial_img/out_distribution/logo_signs/iterative/target/0.png,Yield,0
-Adversarial_img/out_distribution/logo_signs/iterative/target/1.png,Stop,0
-Adversarial_img/out_distribution/logo_signs/iterative/target/2.png,Speed limit (60km/h),1
-Adversarial_img/out_distribution/logo_signs/iterative/target/3.png,Turn right ahead,0
-Adversarial_img/out_distribution/logo_signs/iterative/target/4.png,Roundabout mandatory,0
-Adversarial_img/out_distribution/logo_signs/iterative/target/5.png,Speed limit (60km/h),1
-Adversarial_img/out_distribution/logo_signs/iterative/target/6.png,Speed limit (60km/h),1
-Adversarial_img/out_distribution/logo_signs/iterative/target/7.png,Speed limit (60km/h),1
+Adversarial_img/out_distribution/logo_signs/iterative/target/0.png,3,1
+Adversarial_img/out_distribution/logo_signs/iterative/target/1.png,6,0
+Adversarial_img/out_distribution/logo_signs/iterative/target/2.png,1,0
+Adversarial_img/out_distribution/logo_signs/iterative/target/3.png,27,0
+Adversarial_img/out_distribution/logo_signs/iterative/target/4.png,35,0
+Adversarial_img/out_distribution/logo_signs/iterative/target/5.png,3,1
+Adversarial_img/out_distribution/logo_signs/iterative/target/6.png,3,1
+Adversarial_img/out_distribution/logo_signs/iterative/target/7.png,3,1
