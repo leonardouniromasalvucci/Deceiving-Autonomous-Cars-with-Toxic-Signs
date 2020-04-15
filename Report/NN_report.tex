@@ -565,6 +565,12 @@ We tested all kinds of attacks and, using as target class:
 
 
 \section{Conclusions}
+This project aimed to demonstrate how it is possible to deceive an autonomous driving car, causing very serious and life-threatening problems. 
+The recognitions systems of an autonomous driving car should be almost perfect. We can think, for example, in a case when a traffic signal like the one for "school zone" is manipulated and perturbed to be evaluated like "speed limit at 130 km/h", it could cause a tragedy.
+\newline
+The problem is not only when we performs in-distribution attacks, that are even more complicated, but even if we performs out-of-distributions attacks, because in that case the model is not trained to recognize that signal and it is easier to deceive, as we have proven in our attacks.
+\newline
+In conclusion, we can derive that is very difficult to find a solution to these problems, but the autonomous driving companies could try to train their models even with signal that have some perturbations or to recognize other signals, as for example popular logos, in order to learn that they are not traffic signals and should be ignored.
 
 \section*{Useful links}
 \begin{itemize}
