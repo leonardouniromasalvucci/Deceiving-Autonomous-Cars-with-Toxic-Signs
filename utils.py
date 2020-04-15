@@ -1,13 +1,10 @@
 import numpy as np
 import cv2 as cv
 import pandas as pd
-import csv
 import os
 from scipy import misc
 from scipy import ndimage as ndi
 from skimage.feature import canny
-import time
-import cv2
 
 from parameters import *
 

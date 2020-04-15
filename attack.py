@@ -1,7 +1,6 @@
 import pandas as pd
 import warnings
 
-warnings.filterwarnings("ignore")
 import numpy as np
 import keras
 
@@ -10,6 +9,8 @@ from parameters import *
 import utils
 from fg_attack import fg
 from iterative_attack import iterative
+
+warnings.filterwarnings("ignore")
 
 data = pd.read_csv(CSV_PATH)
 data.sort_values(by="ModelId", ascending=True, inplace=True)

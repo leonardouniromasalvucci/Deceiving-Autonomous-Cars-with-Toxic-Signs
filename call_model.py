@@ -7,9 +7,9 @@ import pandas as pd
 import os
 import warnings
 
-warnings.filterwarnings("ignore")
-
 from tensorflow.python.util import deprecation
+
+warnings.filterwarnings("ignore")
 
 deprecation._PRINT_DEPRECATION_WARNINGS = False
 
