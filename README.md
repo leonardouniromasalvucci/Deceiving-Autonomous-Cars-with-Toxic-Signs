@@ -16,13 +16,13 @@ python setup.py
 ```
 
 ### Explanation ###
-* **Adversarial_img**:  4t4h <br/>
-* **Blank_samples**:  4t4h <br/>
-* **Dataset**:  4t4h <br/>
-* **Detector_samples**:  4t4h <br/>
-* **Logo_samples**:  4t4h <br/>
-* **Model**:  4t4h <br/>
-* **Original_samples**:  4t4h <br/>
+* **Adversarial_img**: It contains all the disturbed images and the relative CSV in the appropriate folders, based on the last attack made (read the paper for more details) <br/>
+* **Blank_samples**: Contains all the empty signs used for the *blank_signs_attack* <br/>
+* **Dataset**:  Contains the link to the dataset used in the project <br/>
+* **Detector_samples**: It contains the original road images and the respective images of the detected signals (read the paper for more details) <br/>
+* **Logo_samples**:  Contains all the logo samples used for the *logo_attack* <br/>
+* **Model**:  Contains the link to the trained model<br/>
+* **Original_samples**:  Contains a set of high definition images used to generate contradictory images <br/>
 * **Aug_examples**:  4t4h <br/>
 * **Attack.py**:  4t4h <br/>
 * **Call_model.py**:  4t4h <br/>
