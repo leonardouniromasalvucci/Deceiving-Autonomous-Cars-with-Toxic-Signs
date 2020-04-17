@@ -26,8 +26,7 @@ def match_pred_ym(predictions):
 
 
 def save_in_distribution_attack(model, attack_type, is_target, class_id, x, result):
-    csv_data_attack = pd.DataFrame(
-        columns=['path_adversarial', 'original_prevision', 'adversarial_prevision', 'success'])
+    csv_data_attack = pd.DataFrame(columns=['path_adversarial', 'original_prevision', 'adversarial_prevision', 'success'])
     size = len(x)
 
     for i in range(len(x)):
@@ -36,7 +35,6 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
         img_orig = np.expand_dims(original_image, axis=0)
         res_orig = model.predict(img_orig)
         Ypred_orig = np.argmax(res_orig, axis=1)
-        # print(Ypred_orig[0])
 
         if (attack_type == "FG"):
             adv1 = result[i]
@@ -93,7 +91,7 @@ def save_in_distribution_attack(model, attack_type, is_target, class_id, x, resu
 
     accuracy = round((1 - (float(count) / float(size))) * 100, 2)
 
-    print("Attacks successful: " + str(accuracy) + "% ")  # -> " + str(count) + " errors on " + str(size) + " tests")
+    print("Attacks successful: " + str(accuracy) + "% ")
 
     if (attack_type == "FG"):
         if (is_target):
@@ -157,8 +155,8 @@ def save_out_distribution_attack(model, attack_type, class_id, method, x, result
 
     accuracy = round((1 - (float(count) / float(size))) * 100, 2)
 
-    print("Attacks successful: " + str(accuracy) + "% ")  # -> " + str(count) + " errors on " + str(size) + " tests")
-
+    print("Attacks successful: " + str(accuracy) + "% ")
+    
     if (attack_type == "FG"):
         if (method == "LOGO"):
             csv_data_attack.to_csv(ADV_OUT_LOGO_FG_ATTACK + "result.csv", sep=',', index=False)
@@ -193,10 +191,10 @@ def resize_all(images, interp='bilinear'):
         shape = (len(images),) + IMAGE_SIZE
     else:
         return
-    images_rs = np.zeros(shape)
+    imgs = np.zeros(shape)
     for i, image in enumerate(images):
-        images_rs[i] = resize(image, interp=interp)
-    return images_rs
+        imgs[i] = resize(image, interp=interp)
+    return imgs
 
 
 def find_sign_area(image, sigma=1):
