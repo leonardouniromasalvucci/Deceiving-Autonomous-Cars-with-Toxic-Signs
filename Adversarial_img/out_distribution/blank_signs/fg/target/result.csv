@@ -1,8 +1,8 @@
 path_adversarial,adversarial_prevision,success
-Adversarial_img/out_distribution/blank_signs/fg/target/0.png,27,0
+Adversarial_img/out_distribution/blank_signs/fg/target/0.png,35,0
 Adversarial_img/out_distribution/blank_signs/fg/target/1.png,6,0
-Adversarial_img/out_distribution/blank_signs/fg/target/2.png,3,1
+Adversarial_img/out_distribution/blank_signs/fg/target/2.png,1,1
 Adversarial_img/out_distribution/blank_signs/fg/target/3.png,22,0
 Adversarial_img/out_distribution/blank_signs/fg/target/4.png,35,0
 Adversarial_img/out_distribution/blank_signs/fg/target/5.png,5,0
-Adversarial_img/out_distribution/blank_signs/fg/target/6.png,1,0
+Adversarial_img/out_distribution/blank_signs/fg/target/6.png,1,1
