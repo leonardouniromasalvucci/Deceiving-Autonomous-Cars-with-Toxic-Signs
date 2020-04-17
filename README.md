@@ -16,7 +16,8 @@ python setup.py
 ```
 
 ### Explanation ###
-* *train.py*  4t4h
+* **Adversarial_img**:  4t4h <br/>
+* **train.py**:  4t4h <br/>
 ### Team ###
 * [Antonino Di Maggio](https://www.linkedin.com/in/antonino-di-maggio/) 
 * [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)  
