@@ -10,4 +10,3 @@ Pillow 6.2.0
 pandas 1.0.1
 opencv-python 3.4.4.19
 Keras 2.2.4
-tabulate 0.8.7
