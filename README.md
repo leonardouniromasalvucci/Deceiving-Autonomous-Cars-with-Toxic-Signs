@@ -29,7 +29,7 @@ python setup.py
 * **Data_augmentayion.py**:  It contains the code to modify the images and balance the dataset <br/>
 * **Detector_phase.py**:  It contains the code for the detection phase <br/>
 * **Fg_attack.py**:  It contains the code of the Fast Gradient Attack <br/>
-* **Histogram.py**:  It contains the code to plot the histogram of unbalanced dataset <br/>
+* **Histogram.py**:  It contains the code to plot the histogram of the unbalanced dataset <br/>
 * **Iterative_attack.py**:  It contains the code of the Iterative Attack <br/>
 * **Parameters.py**:  It contains the list of all parameters used on the project <br/>
 * **Real_time_detection.py**:  It contains the code for real-time detection and classification using the webcam  <br/>
