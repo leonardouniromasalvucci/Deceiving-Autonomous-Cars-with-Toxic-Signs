@@ -14,6 +14,9 @@ Then, you can run the following code to install all the necessary libraries:
 ```
 python setup.py
 ```
+
+### Explanation ###
+* *train.py*  4t4h
 ### Team ###
 * [Antonino Di Maggio](https://www.linkedin.com/in/antonino-di-maggio/) 
 * [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)  
