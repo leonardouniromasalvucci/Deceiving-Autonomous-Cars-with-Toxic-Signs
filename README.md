@@ -36,9 +36,9 @@ python setup.py
 * **Requirements.txt**:  It contains the list of all libraries needed to execute the code <br/>
 * **Setup.py**:  It contains the code to install all libraries needed to execute the code <br/>
 * **Sign_name.csv**:  it contains the correspondence between the class of the dataset, the class of the model and the relative label  <br/>
-* **Test.py**:  4t4h <br/>
-* **Train.py**:  4t4h <br/>
-* **Utils.py**:  4t4h <br/>
+* **Test.py**: It contains the code to test the model <br/>
+* **Train.py**:  It contains the code to train the model <br/>
+* **Utils.py**:  It contains all the useful functions in the project <br/>
 
 ### Team ###
 * [Antonino Di Maggio](https://www.linkedin.com/in/antonino-di-maggio/) 
