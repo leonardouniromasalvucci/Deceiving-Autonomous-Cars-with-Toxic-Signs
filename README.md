@@ -46,4 +46,4 @@ python setup.py
 
 ### Useful links ###
 Slide presentation: In progress <br/>
-Paper: https://drive.google.com/open?id=1vDJjxpUsyqt0kizyF87VwtZb8NFrJxrr <br/>
+Paper: https://drive.google.com/file/d/1LlsnN4XHywvCNfyDc0Ya1jeTvysdSVxM/view <br/>
