@@ -17,7 +17,29 @@ python setup.py
 
 ### Explanation ###
 * **Adversarial_img**:  4t4h <br/>
-* **train.py**:  4t4h <br/>
+* **Blank_samples**:  4t4h <br/>
+* **Dataset**:  4t4h <br/>
+* **Detector_samples**:  4t4h <br/>
+* **Logo_samples**:  4t4h <br/>
+* **Model**:  4t4h <br/>
+* **Original_samples**:  4t4h <br/>
+* **Aug_examples**:  4t4h <br/>
+* **Attack.py**:  4t4h <br/>
+* **Call_model.py**:  4t4h <br/>
+* **Data_augmentayion.py**:  4t4h <br/>
+* **Detector_phase.py**:  4t4h <br/>
+* **Fg_attack.py**:  4t4h <br/>
+* **Histogram.py**:  4t4h <br/>
+* **Iterative_attack.py**:  4t4h <br/>
+* **Parameters.py**:  4t4h <br/>
+* **Real_time_detection.py**:  4t4h <br/>
+* **Requirements.txt**:  4t4h <br/>
+* **Setup.py**:  4t4h <br/>
+* **Sign_name.csv**:  4t4h <br/>
+* **Test.py**:  4t4h <br/>
+* **Train.py**:  4t4h <br/>
+* **Utils.py**:  4t4h <br/>
+
 ### Team ###
 * [Antonino Di Maggio](https://www.linkedin.com/in/antonino-di-maggio/) 
 * [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)  
