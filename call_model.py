@@ -19,9 +19,6 @@ deprecation._PRINT_DEPRECATION_WARNINGS = False
 from parameters import *
 import utils
 
-def loss_out(correct, predicted):
-    return tf.nn.softmax_cross_entropy_with_logits_v2(labels=correct, logits=predicted)
-
 def build_cnn(input_shape, num_classes):
     
     inpt = Input(shape=input_shape)
@@ -41,11 +38,11 @@ def build_cnn(input_shape, num_classes):
     concat = Concatenate(axis=-1)([Flatten()(pool_1), Flatten()(pool_2), Flatten()(pool_3)])
     dense_1 = Dense(1024, activation='relu', kernel_regularizer=keras.regularizers.l2(0.0001))(concat)
     drop_4 = Dropout(rate=0.5)(dense_1)
-    output = Dense(num_classes, activation=None, kernel_regularizer=keras.regularizers.l2(0.0001))(drop_4)
+    output = Dense(num_classes,  activation='softmax', kernel_regularizer=keras.regularizers.l2(0.0001))(drop_4)
 
     model = keras.models.Model(inputs=inpt, outputs=output)
 
-    model.compile(optimizer=keras.optimizers.Adam(lr=0.0001), loss=loss_out, metrics=['accuracy'])
+    model.compile(optimizer=keras.optimizers.Adam(lr=0.0001), loss="categorical_crossentropy", metrics=['accuracy'])
 
     return model
 
