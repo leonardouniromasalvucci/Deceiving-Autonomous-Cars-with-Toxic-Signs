@@ -1,4 +1,4 @@
-# Extrapolated from https://github.com/chawins/DART
+# Partially extrapolated from https://github.com/chawins/DART
 import numpy as np
 import tensorflow as tf
 import keras.backend as K
