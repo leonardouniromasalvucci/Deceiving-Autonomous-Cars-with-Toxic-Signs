@@ -85,7 +85,7 @@ y = np.zeros((len(x))) + target
 y = keras.utils.to_categorical(y, NUM_LABELS)
 
 utils.printProgressBar(0, 100, prefix = 'Progress FAST GRADIENT TARGET ATTACK:', suffix = 'Complete', length = 50)
-x_fg_target = fg(model, x, y, masks, True) # IT TARGET ATTACK
+x_fg_target = fg(model, x, y, masks, True) # FG TARGET ATTACK
 utils.printProgressBar(100, 100, prefix = 'Progress FAST GRADIENT TARGET ATTACK:', suffix = 'Complete', length = 50)
 utils.save_out_distribution_attack(model, "FG", target, "LOGO", x, x_fg_target)
 
@@ -107,7 +107,7 @@ y = np.zeros((len(x))) + target
 y = keras.utils.to_categorical(y, NUM_LABELS)
 
 utils.printProgressBar(0, 100, prefix = 'Progress FAST GRADIENT TARGET ATTACK:', suffix = 'Complete', length = 50)
-x_fg_target = fg(model, x, y, masks, True) # IT TARGET ATTACK
+x_fg_target = fg(model, x, y, masks, True) # FG TARGET ATTACK
 utils.printProgressBar(100, 100, prefix = 'Progress FAST GRADIENT TARGET ATTACK:', suffix = 'Complete', length = 50)
 utils.save_out_distribution_attack(model, "FG", target, "BLANK", x, x_fg_target)
 
