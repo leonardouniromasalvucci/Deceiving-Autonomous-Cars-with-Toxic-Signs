@@ -58,7 +58,7 @@ print("\n\n")
 utils.printProgressBar(0, 100, prefix = 'Progress FAST GRADIENT UNTARGET ATTACK:', suffix = 'Complete', length = 50)
 x_fg_untarget = fg(model, x, y_true, masks, False) # FG UNTARGET ATTACK
 utils.printProgressBar(100, 100, prefix = 'Progress FAST GRADIENT UNTARGET ATTACK:', suffix = 'Complete', length = 50)
-utils.save_in_distribution_attack(model, "FG", False, target, x, x_fg_target)
+utils.save_in_distribution_attack(model, "FG", False, target, x, x_fg_untarget)
 
 print("\n\n")
 
@@ -72,7 +72,7 @@ print("\n\n")
 utils.printProgressBar(0, 100, prefix = 'Progress ITERATIVE UNTARGET ATTACK:', suffix = 'Complete', length = 50)
 x_it_untarget = iterative(model, x, y_true, masks, False) # IT UNTARGET ATTACK
 utils.printProgressBar(100, 100, prefix = 'Progress ITERATIVE UNTARGET ATTACK:', suffix = 'Complete', length = 50)
-utils.save_in_distribution_attack(model, "IT", False, target, x, x_it_target)
+utils.save_in_distribution_attack(model, "IT", False, target, x, x_it_untarget)
 
 print("\n\n\n\n")
 
