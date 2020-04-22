@@ -1,6 +1,6 @@
 # Deceiving Autonomous Cars with Toxic Signs #
 
-The code of this repository is partly taken from: [DARTS: Deceiving Autonomous Cars with Toxic Signs](https://github.com/chawins/DART). 
+The code of this repository is partly taken from [DARTS: Deceiving Autonomous Cars with Toxic Signs](https://github.com/chawins/DART). 
 The extrapolated code was fully understood and re-elaborated for our needs.
 
 ### Abstract ###
