@@ -48,5 +48,5 @@ python setup.py
 * [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)  
 
 ### Useful links ###
-Slide presentation: In progress <br/>
+Slide presentation: https://www.slideshare.net/LeonardoSalvucci1/deceiving-autonomous-cars-with-toxic-signs <br/>
 Paper: https://drive.google.com/open?id=12a5C4TImbhINUXYqsj68qN5DuaSrj82c <br/>
