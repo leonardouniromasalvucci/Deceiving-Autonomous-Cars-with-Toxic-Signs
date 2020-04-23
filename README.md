@@ -49,4 +49,4 @@ python setup.py
 
 ### Useful links ###
 Slide presentation: https://drive.google.com/open?id=1UfJasxK4on0-VzZtjkDPes3HW4oNtkQM <br/>
-Paper: https://drive.google.com/open?id=1WVkMdbu02EDNlVvhR90Ro4Z-1G1HzUL_ <br/>
+Paper: https://drive.google.com/file/d/1WVkMdbu02EDNlVvhR90Ro4Z-1G1HzUL_/view?usp=sharing <br/>
